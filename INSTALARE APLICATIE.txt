@@ -1,0 +1,13 @@
+1. Copiati link-ul repository-ului si creati un nou folder pe masina de lucru
+
+2. In folder-ul creat dati click dreapta si selectati "Git Bash Here" (desigur, trebuie instalat Git pe masina de lucru)
+
+3. Se va deschide un command prompt si se va utiliza comanda $git clone linkul copiat
+
+4. Dupa ce s-a terminat de descarcat fisierul in folderul creat, deschideti folderul cu editorul Visual Studio Code sau orice alt editor si stergeti din folder fisierul 
+
+package-lock.json 
+
+5. Dupa stergerea fisierului utilizati comanda npm install in command prompt-ul folderului 
+
+6. Dupa finalizarea procesului de instalare utilizati comanda npm start in command prompt si aplicatia ar trebui sa ruleze fara probleme 
