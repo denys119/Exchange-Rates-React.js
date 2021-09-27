@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+
+//Route
+import { Switch, Route, useLocation } from "react-router-dom";
+
+//Global Style
+
+import GlobalStyle from "./components/GlobalStyle";
+
+//Redux
+
+import { useDispatch } from "react-redux";
+
+import { loadCurrencies } from "./actions/currencyAction";
+
+//Import components
+
+import Header from "./components/Header";
+
+import Main from "./components/Main";
+
+import Modal from "./components/Modal";
+
+import ButtonComponent from "./components/ButtonComponent";
 
 function App() {
+  const location = useLocation();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadCurrencies());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <div className="App">
+        <Header />
+        <Switch location={location} key={location.pathname}>
+          <Route path="/" exact>
+            <Main />
+          </Route>
+          <Route path="/currencies" exact>
+            <Modal />
+          </Route>
+        </Switch>
+        {location.pathname === "/" ? <ButtonComponent /> : ""}
+      </div>
+    </>
   );
 }
 
